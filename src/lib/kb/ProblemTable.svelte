@@ -25,7 +25,7 @@
   <tbody>
     {#each split.groups as g (g.problem)}
       <tr>
-        <td><code>{g.problem}</code></td>
+        <td><code>{g.problem}</code>{#if g.filedUnder}<br /><small>also counted under {g.filedUnder.join(', ')}</small>{/if}</td>
         <td>{g.reports.length}</td>
         <td>{g.tenants}</td>
         <td>{g.firstSeen} → {g.lastSeen}</td>

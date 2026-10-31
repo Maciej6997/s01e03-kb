@@ -44,6 +44,7 @@ The parser fix alone does not close #4471. <code>hint</code> and <code>one-day</
 - One report per id. The export pages overlap, so some reports appear twice.
 - Placed by tenant locale, form and channel (`causes.ts`), not by the intake tag. The intake tag guesses from the
   reporter's browser and disagrees with the tenant often.
-- One-day moves come from the desk's notes and count only under `one-day`.
+- One-day moves come from the desk's notes. As on #4471, they stay counted where they are filed (`parser`),
+  and have their own row and ticket.
 
 <RenderStamp {signature} />
