@@ -4,7 +4,7 @@ title: '#4471 split · three problems, not one'
 owner: Maciej6997
 status: open
 reviewed: 2026-10-31
-signature: Maciej6997
+signature: 'v1.eyJzdWIiOiIxODIzIiwiYXVkIjoiY2hhbGxlbmdlOndoYXQtaXQtc2hvd3MiLCJpYXQiOjE3OTM0NDQ4NjUsImV4cCI6MTc5MzUzMTI2NX0.23mlqnx5tecs1_ZCI9OBfte4MBx8uFBmlNsjVoAWksU'
 ---
 
 <script>
