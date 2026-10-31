@@ -26,8 +26,16 @@ Each needs its own fix and has its own ticket.
 <ProblemTable ticket={4471} {tickets} />
 
 <Callout kind="warn">
-The parser fix alone does not close #4471. <code>hint</code> and <code>one-day</code> reports keep coming after it ships.
+#4471 closed on 5 October with two outcomes, one per problem engineering knew about. <code>one-day</code> got no fix and is still open.
 </Callout>
+
+## Where each problem stands
+
+From engineering's update on #4471 (closed 5 October):
+
+- **`parser`**: fixed, `fix(dates): parse dd/mm for eu locales`. Ticket closed as completed.
+- **`hint`**: won't fix, because the booking-v3 form is retired. Ticket closed as not planned.
+- **`one-day`**: not in the update. No fix, so its ticket stays open. Reports like these will keep coming.
 
 ## The three problems
 
