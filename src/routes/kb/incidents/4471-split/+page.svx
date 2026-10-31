@@ -1,0 +1,49 @@
+---
+layout: runbook
+title: '#4471 split · three problems, not one'
+owner: Maciej6997
+status: open
+reviewed: 2026-10-31
+signature: Maciej6997
+---
+
+<script>
+  import ProblemTable from '#lib/kb/ProblemTable.svelte';
+  import RenderStamp from '#lib/kb/RenderStamp.svelte';
+  import Callout from '#lib/kb/Callout.svelte';
+
+  const tickets = {
+    parser: 'https://github.com/Maciej6997/s01e03-kb/issues/1',
+    hint: 'https://github.com/Maciej6997/s01e03-kb/issues/2',
+    'one-day': 'https://github.com/Maciej6997/s01e03-kb/issues/3',
+  };
+</script>
+
+[#4471](/kb/incidents/4471) was merged by subject line ([decision 0001](/kb/decisions/0001-dedupe-by-subject))
+and marked known with one fix queued. Read by tenant, form and body, it holds three problems.
+Each needs its own fix and has its own ticket.
+
+<ProblemTable ticket={4471} {tickets} />
+
+<Callout kind="warn">
+The parser fix alone does not close #4471. <code>hint</code> and <code>one-day</code> reports keep coming after it ships.
+</Callout>
+
+## The three problems
+
+- **`parser`**: the shared parser reads dates month first, and day-first tenants write the day first. Day and month swap.
+- **`hint`**: booking-v3's form prints `MM/DD/YYYY` under its date field, then reads the date the tenant's way.
+  People type what the hint says. Day and month swap again, but the fix is in the form. These are reports
+  through the `form` channel from day-first tenants on booking-v3.
+- **`one-day`**: the date moves one day earlier with no swap, e.g. Tuesday 12 May shown as Monday 11 May.
+  The desk already read these as one-day moves (`desk-notes.json`). The cause is not verified. It looks like a time-zone
+  conversion of a date-only booking. Engineering has to check it in sched-prod.
+
+## How this was counted
+
+- One report per id. The export pages overlap, so some reports appear twice.
+- Placed by tenant locale, form and channel (`causes.ts`), not by the intake tag. The intake tag guesses from the
+  reporter's browser and disagrees with the tenant often.
+- One-day moves come from the desk's notes and count only under `one-day`.
+
+<RenderStamp {signature} />
